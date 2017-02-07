@@ -20,8 +20,4 @@ class PushViewController2: UIViewController, NavTheme {
 
     //MARK: - NavTheme
     var navTitle: String = "default"
-    
-    func customNavView() -> UIView? {
-        return nil
-    }
 }

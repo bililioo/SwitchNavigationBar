@@ -30,17 +30,6 @@ class PushViewController: UIViewController, NavTheme {
     }
     
     //MARK: - NavTheme
-    func customNavView() -> UIView? {
-//        return imageView
-        return nil
-    }
     
     var navTitle: String = "跳转后的控制器"
-
-    lazy var imageView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.backgroundColor = .orange
-        return imgView
-    }()
-
 }

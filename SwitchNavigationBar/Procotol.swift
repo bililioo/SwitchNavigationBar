@@ -31,6 +31,8 @@ protocol NavTheme {
     var navTitle: String { get }
     
     
+//    func navTitle(_ title: String)
+    
     /// 导航栏风格
     ///
     /// - Parameter style: enum ThemeStyle
@@ -44,6 +46,10 @@ protocol NavTheme {
 }
 
 extension NavTheme where Self: UIViewController {
+    
+    func customNavView() -> UIView? {
+        return nil
+    }
     
     func navTheme(style: ThemeStyle) {
         
@@ -101,7 +107,6 @@ extension NavTheme where Self: UIViewController {
         
     }
     
-    
     func presentAlert() {
         let alert = UIAlertController.init(title: "❎自定义导航栏视图不能为空!", message: nil, preferredStyle: .alert)
         let defaultAction = UIAlertAction.init(title: "确定", style: .default) { (alertAction) in
@@ -111,4 +116,5 @@ extension NavTheme where Self: UIViewController {
         alert.addAction(defaultAction)
         self.present(alert, animated: true, completion: nil)
     }
+
 }

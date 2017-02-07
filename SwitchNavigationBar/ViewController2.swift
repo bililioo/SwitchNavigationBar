@@ -42,7 +42,6 @@ class ViewController2: UIViewController, NavTheme {
         // Dispose of any resources that can be recreated.
     }
     
-    
     lazy var btn1: UIButton = {
         var btn = BlockButton.init(type: .system)
         btn.setTitle("跳转到default导航栏控制器", for: .normal)
