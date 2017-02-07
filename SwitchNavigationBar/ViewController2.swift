@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController2: UIViewController, NavTheme {
     
+    private var hiddenNav: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +34,7 @@ class ViewController2: UIViewController, NavTheme {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setNavigationBarHidden(hiddenNav, animated: animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,8 +60,12 @@ class ViewController2: UIViewController, NavTheme {
     func btnClicked(btn: UIButton) {
         
         if btn == btn1 {
+            hiddenNav = false
             self.navigationController?.pushViewController(PushViewController2(), animated: true)
         } else {
+            
+            hiddenNav = true
+            
             let vc = PushViewController3()
             vc.isHiddenNav = true
             self.navigationController?.pushViewController(vc, animated: true)
