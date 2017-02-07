@@ -20,6 +20,14 @@ class BlockButton: UIButton {
         self.addTarget(self, action: #selector(btnClicked), for: .touchUpInside)
     }
     
+    convenience init(type: UIButtonType, block: @escaping ButtonBlock) {
+        self.init(type: type, block: block)
+        self.block = block
+        self.addTarget(self, action: #selector(btnClicked), for: .touchUpInside)
+    }
+    
+    
+    
     func btnClicked() {
         guard let block = block else {
             return

@@ -9,30 +9,38 @@
 import UIKit
 
 class PushViewController: UIViewController, NavTheme {
-
-    var navTitle: String = "跳转后的控制器"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .white
-        self.navTheme(style: .pink)
+        self.navTheme(style: .custom)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    */
+    
+    //MARK: - NavTheme
+    func customNavView() -> UIView? {
+//        return imageView
+        return nil
+    }
+    
+    var navTitle: String = "跳转后的控制器"
+
+    lazy var imageView: UIImageView = {
+        var imgView = UIImageView()
+        imgView.backgroundColor = .orange
+        return imgView
+    }()
 
 }
