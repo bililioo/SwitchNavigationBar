@@ -56,17 +56,22 @@ extension NavTheme where Self: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                                         NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
         if (self.navigationController?.viewControllers.count)! > 1 {
-            self.whiteBackBtn()
+            self.initBackBtn()
         }
         
     }
     
     
-    func whiteBackBtn() {
+    func initBackBtn() {
         
-        let backBtn: UIButton = UIButton()
+        let backBtn = BlockButton() {
+            if (self.navigationController?.viewControllers.count)! > 0 {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        backBtn.adjustsImageWhenHighlighted = false
         backBtn.setBackgroundImage(#imageLiteral(resourceName: "icon_arrow_white"), for: .normal)
-        backBtn.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+        backBtn.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: backBtn)
         
     }

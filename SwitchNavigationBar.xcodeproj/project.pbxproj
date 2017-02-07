@@ -17,6 +17,8 @@
 		229C0BD51E486D1B00A88231 /* URNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C0BD41E486D1B00A88231 /* URNavigationController.swift */; };
 		229C0BDB1E49698D00A88231 /* UIImage+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C0BDA1E49698C00A88231 /* UIImage+RoundedCorners.swift */; };
 		229C0BDD1E496ECC00A88231 /* PushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C0BDC1E496ECC00A88231 /* PushViewController.swift */; };
+		229C0BDF1E497DD400A88231 /* BlockBrButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C0BDE1E497DD400A88231 /* BlockBrButtonItem.swift */; };
+		229C0BE11E497EF000A88231 /* BlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C0BE01E497EF000A88231 /* BlockButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		229C0BD41E486D1B00A88231 /* URNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URNavigationController.swift; sourceTree = "<group>"; };
 		229C0BDA1E49698C00A88231 /* UIImage+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundedCorners.swift"; sourceTree = "<group>"; };
 		229C0BDC1E496ECC00A88231 /* PushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushViewController.swift; sourceTree = "<group>"; };
+		229C0BDE1E497DD400A88231 /* BlockBrButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockBrButtonItem.swift; sourceTree = "<group>"; };
+		229C0BE01E497EF000A88231 /* BlockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				229C0BD11E486C4E00A88231 /* RootVC */,
 				229C0BCA1E485D0300A88231 /* Procotol */,
 				229C0BB81E485CEA00A88231 /* AppDelegate.swift */,
+				229C0BDE1E497DD400A88231 /* BlockBrButtonItem.swift */,
+				229C0BE01E497EF000A88231 /* BlockButton.swift */,
 				229C0BBA1E485CEA00A88231 /* ViewController.swift */,
 				229C0BCF1E486B8900A88231 /* ViewController2.swift */,
 				229C0BDC1E496ECC00A88231 /* PushViewController.swift */,
@@ -168,7 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				229C0BD51E486D1B00A88231 /* URNavigationController.swift in Sources */,
+				229C0BE11E497EF000A88231 /* BlockButton.swift in Sources */,
 				229C0BD31E486C5F00A88231 /* RootViewController.swift in Sources */,
+				229C0BDF1E497DD400A88231 /* BlockBrButtonItem.swift in Sources */,
 				229C0BDD1E496ECC00A88231 /* PushViewController.swift in Sources */,
 				229C0BBB1E485CEA00A88231 /* ViewController.swift in Sources */,
 				229C0BD01E486B8900A88231 /* ViewController2.swift in Sources */,
@@ -328,6 +336,7 @@
 				229C0BC91E485CEA00A88231 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
