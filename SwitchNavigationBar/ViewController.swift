@@ -71,10 +71,6 @@ class ViewController: UIViewController, NavTheme {
     }
     
     //MARK: - NavTheme
-//    func customNavView() -> UIView? {
-//        return nil
-//    }
-    
     var navTitle: String = "红色"
 }
 

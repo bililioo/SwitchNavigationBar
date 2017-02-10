@@ -69,11 +69,7 @@ extension NavTheme where Self: UIViewController {
     
     func customTheme() {
 
-        guard self.customNavView() != nil else {
-            print("❎自定义导航栏视图不能为空!")
-            self.presentAlert()
-            return
-        }
+        assert(self.customNavView() != nil, "❎自定义导航栏视图不能为空!")
         
         let customNavView = self.customNavView()
         customNavView?.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)

@@ -60,7 +60,10 @@ class ViewController2: UIViewController, NavTheme {
         
         if btn == btn1 {
             hiddenNav = false
-            self.navigationController?.pushViewController(PushViewController2(), animated: true)
+            
+            let pushVC2 = PushViewController2()            
+            self.navigationController?.pushViewController(pushVC2, animated: true)
+            
         } else {
             
             hiddenNav = true
