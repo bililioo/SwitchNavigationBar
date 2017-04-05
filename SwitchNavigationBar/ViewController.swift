@@ -18,6 +18,8 @@ class ViewController: UIViewController, NavTheme {
         self.navTheme(style: .default)
         self.navTitle("系统导航栏")
         
+        
+        
         self.view.addSubview(btn)
         btn.frame = CGRect.init(x: 0, y: 70, width: 120, height: 40)
         self.view.addSubview(btn1)
