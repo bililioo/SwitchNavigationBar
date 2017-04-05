@@ -11,28 +11,21 @@ import UIKit
 typealias ButtonBlock = ()->()
 
 class BlockButton: UIButton {
-
+    
     var block: ButtonBlock?
     
-    convenience init(block: @escaping ButtonBlock) {
-        self.init()
-        self.block = block
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.addTarget(self, action: #selector(btnClicked), for: .touchUpInside)
     }
     
-    convenience init(type: UIButtonType, block: @escaping ButtonBlock) {
-        self.init(type: type, block: block)
-        self.block = block
-        self.addTarget(self, action: #selector(btnClicked), for: .touchUpInside)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
-    func btnClicked() {
-        guard let block = block else {
-            return
+    @objc private func btnClicked() {
+        if self.block != nil {
+            self.block!()
         }
-        block()
     }
-
 }

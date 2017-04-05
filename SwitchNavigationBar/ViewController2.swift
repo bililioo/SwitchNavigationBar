@@ -80,8 +80,6 @@ class ViewController2: UIViewController, NavTheme {
         return imageView
     }
     
-    var navTitle: String = ""
-    
     lazy var imageView: UIImageView = {
         var imgView = UIImageView()
         imgView.backgroundColor = .orange

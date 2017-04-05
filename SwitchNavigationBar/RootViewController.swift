@@ -18,8 +18,8 @@ class RootViewController: UIViewController, UINavigationControllerDelegate {
         let nav1: URNavigationController = URNavigationController.init(rootViewController: vc1)
         let nav2: URNavigationController = URNavigationController.init(rootViewController: vc2)
         
-        nav1.tabBarItem = UITabBarItem.init(title: "控制器1", image: UIImage.init(named: "fsdf"), tag: 10001)
-        nav2.tabBarItem = UITabBarItem.init(title: "控制器2", image: UIImage.init(named: "afs"), tag: 10002)
+        nav1.tabBarItem = UITabBarItem.init(title: "控制器1", image: UIImage(), tag: 10001)
+        nav2.tabBarItem = UITabBarItem.init(title: "控制器2", image: UIImage(), tag: 10002)
         
         nav1.delegate = self
         nav2.delegate = self

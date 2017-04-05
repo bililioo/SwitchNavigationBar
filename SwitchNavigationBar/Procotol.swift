@@ -20,18 +20,15 @@ func printPointer<T>(_ ptr: UnsafePointer<T>) {
 enum ThemeStyle: String {
     case `default`
     case custom
+    case white
 }
-
-var radius = Radius.init(topLeftRadius: 0, topRightRadius: 0, bottomLeftRadius: 0, bottomRightRadius: 0)
-let bgImg = UIImage.drawImage(size: CGSize.init(width: 1, height: 1), borderWidth: 0, borderColor: .clear, radius: &radius, backgroundColor: .red)
 
 protocol NavTheme {
     
     /// 导航栏标题
-    var navTitle: String { get }
-    
-    
-//    func navTitle(_ title: String)
+    ///
+    /// - Parameter title: String
+    func navTitle(_ title: String)
     
     /// 导航栏风格
     ///
@@ -39,7 +36,7 @@ protocol NavTheme {
     func navTheme(style: ThemeStyle)
     
     
-    /// 自定义导航栏, 当ThemeStyle == pink时, 应当传nil
+    /// ThemeStyle == .custom时，需要实现此方法
     ///
     /// - Returns: 自定义导航栏View
     func customNavView() -> UIView?
@@ -47,70 +44,71 @@ protocol NavTheme {
 
 extension NavTheme where Self: UIViewController {
     
+    func defaultBgImage() -> UIImage {
+        return UIImage.createImage(color: UIColor.rgbColor(red: 251, green: 142, blue: 195))
+    }
+    
+    func whiteBgImage() -> UIImage {
+        return UIImage.createImage(color: .white)
+    }
+    
     func customNavView() -> UIView? {
         return nil
     }
     
     func navTheme(style: ThemeStyle) {
-        
         switch style {
         case .default:
-            
-            self.navigationItem.title = navTitle
-            self.defaultTheme()
-            print(navTitle)
-            print(style)
+            self.setNav(self.defaultBgImage())
         case .custom:
-            
             self.customTheme()
-            print(style)
+        case .white:
+            self.setNav(self.whiteBgImage(), titleColor: .black)
         }
     }
     
-    func customTheme() {
-
-        assert(self.customNavView() != nil, "❎自定义导航栏视图不能为空!")
-        
-        let customNavView = self.customNavView()
-        customNavView?.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)
-        self.view.addSubview(customNavView!)
-        
+    func navTitle(_ title: String) {
+        self.navigationItem.title = title
     }
     
-    func defaultTheme() {
-        
-        self.navigationController?.navigationBar.setBackgroundImage(bgImg, for: .default)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
-                                                                        NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
-        if (self.navigationController?.viewControllers.count)! > 1 {
-            self.initBackBtn()
+    private func customTheme() {
+        if let customNavView: UIView = self.customNavView() {
+            customNavView.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)
+            self.view.addSubview(customNavView)
         }
-        
     }
     
-    
-    func initBackBtn() {
+    private func initBackBtn(_ backImage: UIImage) {
         
-        let backBtn = BlockButton() {
-            if (self.navigationController?.viewControllers.count)! > 0 {
-                self.navigationController?.popViewController(animated: true)
+        
+        let backBtn = BlockButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        backBtn.adjustsImageWhenHighlighted = false
+        backBtn.setBackgroundImage(backImage, for: .normal)
+        backBtn.block = {
+            [weak self] in
+            if (self?.navigationController?.viewControllers.count)! > 0 {
+                self?.navigationController?.popViewController(animated: true)
             }
         }
-        backBtn.adjustsImageWhenHighlighted = false
-        backBtn.setBackgroundImage(#imageLiteral(resourceName: "icon_arrow_white"), for: .normal)
-        backBtn.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: backBtn)
-        
     }
     
-    func presentAlert() {
-        let alert = UIAlertController.init(title: "❎自定义导航栏视图不能为空!", message: nil, preferredStyle: .alert)
-        let defaultAction = UIAlertAction.init(title: "确定", style: .default) { (alertAction) in
-            alert.dismiss(animated: true, completion: nil)
-        }
+    private func setNav(_ backgroundImage: UIImage, titleColor: UIColor = UIColor.white) {
         
-        alert.addAction(defaultAction)
-        self.present(alert, animated: true, completion: nil)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(backgroundImage, for: .default)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleColor]
+        
+        //        NSFontAttributeName: UIFont.systemFont(ofSize: 18)
+        if (self.navigationController?.viewControllers.count)! > 1 {
+            if backgroundImage == self.defaultBgImage() {
+                self.initBackBtn(#imageLiteral(resourceName: "icon_arrow_white"))
+            } else {
+                self.initBackBtn(#imageLiteral(resourceName: "icon_arrow_white"))
+            }
+            
+        }
     }
-
 }

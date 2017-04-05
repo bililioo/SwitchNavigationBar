@@ -16,10 +16,10 @@ class ViewController: UIViewController, NavTheme {
         self.view.backgroundColor = .white
         
         self.navTheme(style: .default)
+        self.navTitle("系统导航栏")
         
         self.view.addSubview(btn)
         btn.frame = CGRect.init(x: 0, y: 70, width: 120, height: 40)
-        
         self.view.addSubview(btn1)
         btn1.frame = CGRect.init(x: 0, y: 200, width: 200, height: 80)
         self.view.addSubview(btn2)
@@ -34,6 +34,17 @@ class ViewController: UIViewController, NavTheme {
     
     func buttonClicked() {
         self.navigationController?.pushViewController(PushViewController(), animated: true)
+    }
+    
+    func btnClicked(btn: UIButton) {
+        
+        if btn == btn1 {
+            self.navigationController?.pushViewController(PushViewController2(), animated: true)
+        } else {
+            let vc = PushViewController3()
+            vc.isHiddenNav = false
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     lazy var btn: UIButton = {
@@ -57,20 +68,5 @@ class ViewController: UIViewController, NavTheme {
         btn.addTarget(self, action: #selector(btnClicked(btn:)), for: .touchUpInside)
         return btn
     }()
-    
-    func btnClicked(btn: UIButton) {
-        
-        if btn == btn1 {
-            self.navigationController?.pushViewController(PushViewController2(), animated: true)
-        } else {
-            let vc = PushViewController3()
-            vc.isHiddenNav = false
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-    }
-    
-    //MARK: - NavTheme
-    var navTitle: String = "红色"
 }
 
