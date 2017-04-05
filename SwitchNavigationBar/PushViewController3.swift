@@ -29,11 +29,7 @@ class PushViewController3: UIViewController, NavTheme {
         
         self.view.backgroundColor = .black
         self.navTheme(style: .custom)
-        // Do any additional setup after loading the view.
     }
-    
-    //MARK: - NavTheme
-    var navTitle: String = "custom"
     
     func customNavView() -> UIView? {
         let view = UIView()

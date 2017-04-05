@@ -15,9 +15,6 @@ class PushViewController2: UIViewController, NavTheme {
 
         self.view.backgroundColor = .black
         self.navTheme(style: .default)
-        // Do any additional setup after loading the view.
+        self.navTitle("default")
     }
-
-    //MARK: - NavTheme
-    var navTitle: String = "default"
 }

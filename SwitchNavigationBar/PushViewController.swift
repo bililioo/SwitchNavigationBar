@@ -15,6 +15,7 @@ class PushViewController: UIViewController, NavTheme {
 
         self.view.backgroundColor = .white
         self.navTheme(style: .custom)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +29,4 @@ class PushViewController: UIViewController, NavTheme {
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-    //MARK: - NavTheme
-    
-    var navTitle: String = "跳转后的控制器"
 }
